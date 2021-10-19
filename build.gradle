@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'org.springframework.boot' version '2.5.5'
     id 'java'
 }
 
@@ -28,7 +28,7 @@ test {
 }
 
 dependencies {
-    implementation platform('software.amazon.awssdk:bom:2.5.29')
+    implementation platform('software.amazon.awssdk:bom:2.17.62')
     implementation 'software.amazon.awssdk:kinesis'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -41,21 +41,23 @@ dependencies {
     testImplementation 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.3.2"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.3.2"
+    //testImplementation "org.junit.jupiter:junit-jupiter-api:5.3.2"
+    //testRuntime "org.junit.jupiter:junit-jupiter-engine:5.3.2"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit', module: 'junit'
     }
 
-    // https://mvnrepository.com/artifact/com.github.paulcwarren/spring-content-rest
-    compile group: 'com.github.paulcwarren', name: 'spring-content-rest-boot-starter', version: '0.8.0'
+    // https://mvnrepository.com/artifact/com.github.paulcwarren/spring-content-s3-boot-starter
+    implementation group: 'com.github.paulcwarren', name: 'spring-content-s3-boot-starter', version: '1.2.5'
+
     // https://mvnrepository.com/artifact/com.github.paulcwarren/spring-content-s3
-    compile group: 'com.github.paulcwarren', name: 'spring-content-s3-boot-starter', version: '0.8.0'
+    implementation group: 'com.github.paulcwarren', name: 'spring-content-s3-boot-starter', version: '1.2.5'
+    implementation group: 'com.github.paulcwarren', name: 'spring-content-rest', version: '1.2.5'
 
     // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
-    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
     // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
     // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
-    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.2'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.2'
 }
